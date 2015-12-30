@@ -1,6 +1,6 @@
 MRuby::Gem::Specification.new('demsgpack') do |spec|
   spec.license = 'MIT'
-  spec.author  = 'MRuby Developer'
+  spec.author  = 'Masato Ikeda'
   spec.summary = 'demsgpack'
   spec.bins    = ['demsgpack']
 
