@@ -11,13 +11,22 @@ module Demsgpack
       if @options["version"]
         Version.new(@output_io).run
       else
-        Convert.new(@input_io, @output_io).run
+        converter_class_for(@options["format"]).new(@input_io, @output_io).run
+      end
+    end
+
+    def converter_class_for(format)
+      case format.to_s.downcase
+      when "yaml"
+        YAMLConverter
+      else
+        JSONConverter
       end
     end
 
     def parse_options(argv)
       class << argv; include Getopts; end
-      argv.getopts("v", "version")
+      argv.getopts("f:v", "format:json", "version")
     end
   end
 end

@@ -1,5 +1,5 @@
 module Demsgpack
-  class Convert
+  class BaseConverter
     def initialize(input_io, output_io)
       @input_io  = input_io
       @output_io = output_io
@@ -20,7 +20,7 @@ module Demsgpack
     end
 
     def encode(data)
-      JSON.generate(data)
+      raise NotImplementedError
     end
   end
 end
