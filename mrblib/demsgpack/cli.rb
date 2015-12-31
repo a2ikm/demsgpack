@@ -10,6 +10,8 @@ module Demsgpack
     def run
       if @options["version"]
         Version.new(@output_io).run
+      elsif @options["help"]
+        Help.new(@output_io).run
       else
         converter_class_for(@options["format"]).new(@input_io, @output_io).run
       end
@@ -26,7 +28,7 @@ module Demsgpack
 
     def parse_options(argv)
       class << argv; include Getopts; end
-      argv.getopts("f:v", "format:json", "version")
+      argv.getopts("f:hv", "format:json", "help", "version")
     end
   end
 end
